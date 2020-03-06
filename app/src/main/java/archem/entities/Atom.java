@@ -3,6 +3,7 @@ package archem.entities;
 import android.util.Log;
 
 import com.google.ar.sceneform.Node;
+import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.Material;
 import com.google.ar.sceneform.ux.ArFragment;
 
@@ -11,6 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Vector;
 
 public class Atom implements Cloneable, AnimationNode
 {
@@ -40,6 +42,10 @@ public class Atom implements Cloneable, AnimationNode
     public int x;
     public int y;
     public int z;
+    public int targetx;
+    public int targety;
+    public int targetz;
+    public boolean isMoving=false;
 
     public int[] configuration;
 
@@ -64,6 +70,7 @@ public class Atom implements Cloneable, AnimationNode
     public void init()
     {
         float basetheta = .01f;
+
         for (int orbit = 0; orbit < configuration.length; orbit++)
         {
             int nelectrons = configuration[orbit];
@@ -157,16 +164,18 @@ public class Atom implements Cloneable, AnimationNode
         Log.d("test1", "BuildAtom");
         Random r = new Random();
       //  Log.d("test1", "creating atom");
-        Node atomNode = Util.createSphere(arFragment, (float) (x) / Util.scale, 0f, (float) y / Util.scale, .0f, moleculeNode, materialMap.get(MaterialType.NUCLEUS));
-//        moleculeNode.addChild(atomNode);
 
-//        for (int i = 0; i < protons; i++)
+        atomNode = Util.createSphere(arFragment, (float) (x) / Util.scale, 0f, (float) y / Util.scale, .0f, moleculeNode, materialMap.get(MaterialType.NUCLEUS));
+        Util.createView(arFragment, (float) (x) / Util.scale, -0.05f, (float) y / Util.scale, .0f,atomNode,this);
+
+
         for(Hadron p : protonList)
         {
             float x = (r.nextFloat() * 2) - 1;
             float y = (r.nextFloat() * 2) - 1;
             float z = (r.nextFloat() * 2) - 1;
             p.n = Util.createSphere(arFragment, (float) (x) / Util.scale, (float) (0 + y) / Util.scale, (z) / Util.scale, 0.0025f, atomNode, materialMap.get(MaterialType.PROTON));
+            Log.d("test3","protons position"+ p.n.getLocalPosition());
         }
 
 //        for (int i = 0; i < neutrons; i++)
@@ -176,6 +185,7 @@ public class Atom implements Cloneable, AnimationNode
             float y = (r.nextFloat() * 2) - 1;
             float z = (r.nextFloat() * 2) - 1;
             n.n = Util.createSphere(arFragment, (x) / Util.scale, (0 + y) / Util.scale, (z) / Util.scale, 0.0025f, atomNode, materialMap.get(MaterialType.NEUTRON));
+            Log.d("test3","neutrons position"+ n.n.getLocalPosition());
         }
 
 //            //add rings
@@ -192,7 +202,13 @@ public class Atom implements Cloneable, AnimationNode
            // Log.d("test", "creating electron");
 //                createSphere((float) (e.x+a.x)/scale, 0f, (float) (a.y+e.y)/scale, .0005f, atomNode,material);
             e.n = Util.createSphere(arFragment, (float) (e.x) / Util.scale, 0f, (float) (e.y) / Util.scale, .005f, atomNode, materialMap.get(e.materialType));
+            Vector3 vec = Util.getWorldLocation(e.n);
+
+            Log.d("test3","electron position "+ e.n.getLocalPosition());
+            Log.d("test3","printing getWorldLocation "+ vec);
         }
+
+
 
         Log.d("test1", "after buildAtom");
     }
@@ -205,6 +221,33 @@ public class Atom implements Cloneable, AnimationNode
     @Override
     public void update()
     {
+        if(isMoving && atomNode!=null)
+        {
+            Vector3 pos=atomNode.getLocalPosition();
+            float sx=pos.x*Util.scale;
+            float sy=pos.y*Util.scale;
+            float sz=pos.z*Util.scale;
+
+            float dx = targetx - sx;
+            float dy = targety - sy;
+            float dz = targetz - sz;
+          //  Log.d("test4", "dx: "+dx);
+            Log.d("test4", "vslue of x " +symbol+" from x "+sx+" to "+(sx+dx));
+            Log.d("test4", "value of y " +symbol+" from y "+sx+" to "+(sy+dy));
+            Log.d("test4", "value of z " +symbol+" from z "+sx+" to "+(sz+dz));
+
+            double dist=Math.sqrt((dx*dx)+(dy*dy)+(dz*dz))*10;
+         //   Log.d("test4", "distance: "+dist);
+            dx/=dist;
+            dy/=dist;
+            dz/=dist;
+         //   Log.d("test4", "dx after: "+dx);
+
+            Vector3 newpos=new Vector3((float)(sx+dx)/Util.scale, (float)(sy+dy)/Util.scale, (float)(sz+dz)/Util.scale);
+//            Log.d("test4", "newpos: "+newpos);
+            atomNode.setLocalPosition(newpos);
+        }
+
         for (Electron e : electrons) e.update();
         for (Hadron p : protonList) p.update();
         for (Hadron n : neutronList) n.update();

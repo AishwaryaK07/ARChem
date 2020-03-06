@@ -92,11 +92,14 @@ public class AtomCollection
         return atomMap.get(N).clone();
     }
 
-    public static Atom getAtom(String symbol, int newx, int newy)
+    public static Atom getAtom(String symbol,int sourcex, int sourcey,int targetx,int targety)
     {
         Atom a=getAtom(symbol).clone();
-        a.x=newx;
-        a.y=newy;
+        a.x=sourcex;
+        a.y=sourcey;
+        a.targetx=targetx;
+        a.targety=targety;
+        a.isMoving=false;
 
         return a;
     }

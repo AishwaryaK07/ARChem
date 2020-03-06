@@ -35,6 +35,7 @@ import com.google.ar.sceneform.rendering.Material;
 import com.google.ar.sceneform.rendering.MaterialFactory;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.rendering.ShapeFactory;
+import com.google.ar.sceneform.rendering.ViewRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity
     String formula;
     private static final float scale = 300.0f;
     private ModelRenderable sunRenderable;
+
+    ViewRenderable cardplay;
 
     private AnimationThread currentAnimationThread;
     private int animationDelay=10;
@@ -121,6 +124,9 @@ public class MainActivity extends AppCompatActivity
 //        System.out.println(kcl.toString());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab1 = (FloatingActionButton) findViewById(R.id.fab1);
+
+
         fab.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -142,6 +148,19 @@ public class MainActivity extends AppCompatActivity
                         Log.e("test",e.getMessage(),e);
                     }
                 });
+            }
+        });
+
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(molecule!=null)
+                {
+                    for(Atom a : molecule.atoms)
+                    {
+                        a.isMoving=true;
+                    }
+                }
             }
         });
 
@@ -192,7 +211,7 @@ public class MainActivity extends AppCompatActivity
             materialMap.put(MaterialType.NEUTRON, neutronMaterial);
             materialMap.put(MaterialType.ELECTRON, material);
 
-            Log.d("test", "Building molecule");
+            Log.d("test1", "Building molecule"+anchorNode);
             molecule.buildMolecule(arFragment, anchorNode, materialMap);
             Log.d("test", "Molecule built");
 
@@ -362,6 +381,7 @@ public class MainActivity extends AppCompatActivity
 
     private void placeObject(final ArFragment fragment, final Anchor createAnchor, Uri model)
     {
+
         Log.d("test", "placing object");
         ModelRenderable.builder().setSource(fragment.getContext(), model).build().thenAccept((new Consumer()
         {

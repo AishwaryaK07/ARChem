@@ -16,8 +16,7 @@ import java.util.List;
 import archem.entities.Molecule;
 import archem.entities.MoleculeCollection;
 
-public class FirstActivity extends AppCompatActivity implements AdapterView.OnItemClickListener
-{
+public class FirstActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private Button b1;
     ListView lst;
     String formula;
@@ -26,8 +25,7 @@ public class FirstActivity extends AppCompatActivity implements AdapterView.OnIt
     ArrayAdapter<String> arrayAdapder;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
@@ -35,22 +33,19 @@ public class FirstActivity extends AppCompatActivity implements AdapterView.OnIt
         arrayAdapder = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
         this.moleculeList = MoleculeCollection.getMoleculeList();
 
-        for (Molecule m : moleculeList)
-        {
+        for (Molecule m : moleculeList) {
             formula = m.formula;
             arrayAdapder.add(formula);
             lst.setAdapter(arrayAdapder);
         }
-        lst.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
+        lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //System.out.println(lst.getItemAtPosition(position));
                 //  tv= (TextView)findViewById(R.id.textView);
                 // String s = tv.getText().toString();
                 //tv.setText(getIntent().getStringExtra("formula"));
-                String formula=arrayAdapder.getItem(position);
+                String formula = arrayAdapder.getItem(position);
                 Toast.makeText(getApplicationContext(), formula, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -77,9 +72,10 @@ public class FirstActivity extends AppCompatActivity implements AdapterView.OnIt
         startActivity(intent);
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-    {
+        @Override
+        public void onItemClick (AdapterView < ? > parent, View view,int position, long id)
+        {
 
+        }
     }
-}
+

@@ -78,28 +78,14 @@ class ValenceBond extends Bond {
             Node bondNode = Util.createSphere(arFragment, (float) (x) / Util.scale, 0f, (float) y / Util.scale, .005f, moleculeNode, materialMap.get(MaterialType.NUCLEUS));
             bondNodes.add(bondNode);
         }
-
-        //for(int i=0;i<array.length;i++)
-        //{
-        //   for(int j=0;j<array[i].length;j++)
-        //   {
-        //      for(int k=0;k<array[i][j].length;k++)
-        //      {
-        //        shared_electrons-1
-        //  }
-        // }
-        // }
-
-
     }
 
-
     public void init() {
-        for (int i : atoms) {
+       /* for (int i : atoms) {
             Atom a = molecule.atoms[i];
             //a.electrons.subList(a.electrons.size() - shared_electrons, a.electrons.size()).clear();
             a.configuration[a.configuration.length - 1] -= shared_electrons;
-        }
+        }*/
     }
 
     public ValenceBond clone() {
@@ -120,7 +106,7 @@ class IonicBond extends Bond {
     }
 
     public void init() {
-        for (int i = 0; i < atoms.length; i++) {
+      /*  for (int i = 0; i < atoms.length; i++) {
             Atom a = molecule.atoms[atoms[i]];
             int[] c = a.configuration;
             c[c.length - 1] += electron_transfer[i];
@@ -129,7 +115,7 @@ class IonicBond extends Bond {
                 a.configuration = new int[a.configuration.length - 1];
                 System.arraycopy(t, 0, a.configuration, 0, a.configuration.length);
             }
-        }
+        }*/
     }
 
     @Override
