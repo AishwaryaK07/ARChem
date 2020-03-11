@@ -47,3 +47,26 @@ dependencies {
 //        'default',
 //        )
 
+
+
+
+
+sceneform.asset('sampledata/ring.obj',
+        'default',
+        'sampledata/ring.sfa',
+        'src/main/assets/ring')
+
+sceneform.asset('sampledata/ring1.obj',
+        'default',
+        'sampledata/ring1.sfa',
+        'src/main/assets/ring1')
+
+sceneform.asset('sampledata/ring2.obj',
+        'default',
+        'sampledata/ring2.sfa',
+        'src/main/assets/ring2')
+
+sceneform.asset('sampledata/ring3.obj',
+        'default',
+        'sampledata/ring3.sfa',
+        'src/main/assets/ring3')

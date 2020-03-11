@@ -46,6 +46,17 @@ public class MoleculeCollection
                         new ValenceBond(new int[]{0, 1}, 1, 0, 0)
                 }
         ));
+        /*addMolecule(new Molecule("NO2",
+                new Atom[]{
+                        getAtom("N", 0, 0,0,0),
+                        getAtom("O", 45, -40,25,-20),
+                        getAtom("O", 45, 40,25,-20)
+                },
+                new Bond[]{
+                        new ValenceBond(new int[]{0, 1}, 1, 0, 0)
+                }
+        )); */
+
         addMolecule(new Molecule("C2H4",
                 new Atom[]{
                         getAtom("H", -17, -7,12,12),

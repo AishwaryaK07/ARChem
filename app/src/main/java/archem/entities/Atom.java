@@ -2,6 +2,7 @@ package archem.entities;
 
 import android.util.Log;
 
+import com.example.chinmaye.archem.MainActivity;
 import com.google.ar.sceneform.Node;
 import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.Material;
@@ -17,6 +18,10 @@ import java.util.Vector;
 public class Atom implements Cloneable, AnimationNode
 {
 
+    public String str1 = "ring1.sfb";
+    public String str2 = "ring2.sfb";
+    public String str3 = "ring3.sfb";
+
 
     static final int[] MAX_ELECTRON = {2, 8, 18, 32, 50, 72, 98, 128};
     static final double[] angles = {0, 180, 90, 270, 45, 225, 135, 315};
@@ -31,7 +36,7 @@ public class Atom implements Cloneable, AnimationNode
         }
     }
 
-    static final double factor = 1;
+    static final float factor = 1;
 
     public String name;
     public String symbol;
@@ -79,6 +84,8 @@ public class Atom implements Cloneable, AnimationNode
 
             for (int i = 0; i < nelectrons; i++)
             {
+
+
                 double ra = rangles[i];
                 double x = radius * Math.cos(ra);
                 double y = radius * Math.sin(ra);
@@ -202,13 +209,26 @@ public class Atom implements Cloneable, AnimationNode
            // Log.d("test", "creating electron");
 //                createSphere((float) (e.x+a.x)/scale, 0f, (float) (a.y+e.y)/scale, .0005f, atomNode,material);
             e.n = Util.createSphere(arFragment, (float) (e.x) / Util.scale, 0f, (float) (e.y) / Util.scale, .005f, atomNode, materialMap.get(e.materialType));
+
             Vector3 vec = Util.getWorldLocation(e.n);
 
             Log.d("test3","electron position "+ e.n.getLocalPosition());
             Log.d("test3","printing getWorldLocation "+ vec);
         }
 
+      //  MainActivity.createRing(arFragment, (float) (x) / Util.scale, 0f, (float) (y) / Util.scale, .005f, atomNode, materialMap.get(MaterialType.RING));
+      //  MainActivity.createRing(arFragment, (float) (x) / Util.scale, 0f, (float) (y) / Util.scale, .001f, atomNode, materialMap.get(MaterialType.RING));
+      //  MainActivity.createRing(arFragment, (float) (x) / Util.scale, 0f, (float) (y) / Util.scale, .008f, atomNode, materialMap.get(MaterialType.RING));
 
+        for (int orbit = 0; orbit < configuration.length; orbit++)
+        {
+//            int nrings = configuration[orbit];
+            float ring_radius =  ((factor * (orbit + 1) * 10)/Util.scale)/20;
+            System.out.println("ring_radius = " + ring_radius);
+            Util.createRing(str1,arFragment, (float) (0f) / Util.scale, 0f, (float) (0f) / Util.scale, ring_radius, atomNode, materialMap.get(MaterialType.RING));
+            Util.createRing(str2,arFragment, (float) (0f) / Util.scale, 0f, (float) (0f) / Util.scale, ring_radius, atomNode, materialMap.get(MaterialType.RING));
+            Util.createRing(str3,arFragment, (float) (0f) / Util.scale, 0f, (float) (0f) / Util.scale, ring_radius, atomNode, materialMap.get(MaterialType.RING));
+        }
 
         Log.d("test1", "after buildAtom");
     }

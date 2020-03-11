@@ -23,13 +23,18 @@
             android:name="com.google.ar.core"
             android:value="required" />
 
-        <activity android:name=".FirstActivity">
+        <activity android:name=".SplashScreen"
+            android:theme="@style/SplashScreen">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".FirstActivity"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

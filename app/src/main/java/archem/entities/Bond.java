@@ -140,7 +140,7 @@ class IonicBond extends Bond {
     @Override
     public void buildBond(ArFragment arFragment, Node moleculeNode, Map<MaterialType, Material> materialMap)
     {
-        Log.d("test1", "BuildBond");
+        /*Log.d("test1", "BuildBond");
         int index=0;
         for(int et:this.electron_transfer)
         {
@@ -161,7 +161,39 @@ class IonicBond extends Bond {
                 }
             }
             index++;
+        }*/
+
+    }
+    public  void update(ArFragment arFragment, Node moleculeNode, Map<MaterialType, Material> materialMap) {
+        for (int i = 0; i < atoms.length; i++) {
+            Atom a = molecule.atoms[atoms[i]];
+            int[] c = a.configuration;
+            c[c.length - 1] += electron_transfer[i];
+            if (c[c.length - 1] == 0) {
+                int[] t = a.configuration;
+                a.configuration = new int[a.configuration.length - 1];
+                System.arraycopy(t, 0, a.configuration, 0, a.configuration.length);
+            }
         }
+        Log.d("test1", "BuildBond");
+        int index = 0;
+        for (int et : this.electron_transfer) {
+            if (et > 0) {
+                Atom a = molecule.atoms[index];
+
+                for (int i = a.electrons.size() - et; i < a.electrons.size(); i++) {
+                    //moleculeNode=Util.createSphere(arFragment,0, 0, 0, 0.0f, anchorNode,materialMap.get(MaterialType.NUCLEUS));
+                    Log.d("test", "node: ");
+                    a.electrons.get(i).materialType = MaterialType.PROTON;
+                    Node n = a.electrons.get(i).n;
+                    if (n != null) {
+                        n.getRenderable().setMaterial(materialMap.get(MaterialType.PROTON));
+                    }
+                }
+            }
+            index++;
+        }
+
     }
 
 

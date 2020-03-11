@@ -60,20 +60,20 @@ public class MainActivity extends AppCompatActivity
     ViewRenderable cardplay;
 
     private AnimationThread currentAnimationThread;
-    private int animationDelay=10;
+    private int animationDelay = 10;
     private Molecule molecule;
 
     class AnimationThread extends Thread
     {
         public void run()
         {
-            while(this==currentAnimationThread)
+            while (this == currentAnimationThread)
             {
                 //Animation Logic
 
-                if(molecule!=null)
+                if (molecule != null)
                 {
-                    for(Atom a : molecule.atoms)
+                    for (Atom a : molecule.atoms)
                     {
                         a.update();
                     }
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity
     {
         super.onStop();
 
-        this.currentAnimationThread=null;
+        this.currentAnimationThread = null;
     }
 
     @SuppressLint("VisibleForTests")
@@ -142,23 +142,27 @@ public class MainActivity extends AppCompatActivity
                     try
                     {
                         createMolecule(material);
-                    }
-                    catch(Exception e)
+                       // addObject(Uri.parse("ring.sfb"));
+
+
+                    } catch (Exception e)
                     {
-                        Log.e("test",e.getMessage(),e);
+                        Log.e("test", e.getMessage(), e);
                     }
                 });
             }
         });
 
-        fab1.setOnClickListener(new View.OnClickListener() {
+        fab1.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
-                if(molecule!=null)
+            public void onClick(View view)
+            {
+                if (molecule != null)
                 {
-                    for(Atom a : molecule.atoms)
+                    for (Atom a : molecule.atoms)
                     {
-                        a.isMoving=true;
+                        a.isMoving = true;
                     }
                 }
             }
@@ -205,24 +209,28 @@ public class MainActivity extends AppCompatActivity
             Color neutronColor = new Color(0, 0, 1, 1f);
             neutronMaterial.setFloat4("color", neutronColor);
 
+            Material ringMaterial = material.makeCopy();
+            Color ringColor = new Color(0.5f, 0.5f, .5f, 1f);
+            ringMaterial.setFloat4("color", ringColor);
+
             Map<MaterialType, Material> materialMap = new HashMap<>();
             materialMap.put(MaterialType.NUCLEUS, nucleusMaterial);
             materialMap.put(MaterialType.PROTON, protonMaterial);
             materialMap.put(MaterialType.NEUTRON, neutronMaterial);
             materialMap.put(MaterialType.ELECTRON, material);
+            materialMap.put(MaterialType.RING, ringMaterial);
 
-            Log.d("test1", "Building molecule"+anchorNode);
+            Log.d("test1", "Building molecule" + anchorNode);
             molecule.buildMolecule(arFragment, anchorNode, materialMap);
             Log.d("test", "Molecule built");
 
-            currentAnimationThread=new AnimationThread();
+            currentAnimationThread = new AnimationThread();
             currentAnimationThread.start();
 
 //            showChildren(arFragment.getArSceneView().getScene(), 0);
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
-            Log.e("test","Failed",e);
+            Log.e("test", "Failed", e);
         }
 
         //arFragment.getArSceneView().getScene().addChild(anchorNode);
@@ -234,9 +242,9 @@ public class MainActivity extends AppCompatActivity
         String s = "";
         for (int i = 0; i < depth; i++)
             s += "\t";
-        Log.d("test",s);
+        Log.d("test", s);
 
-        Log.d("test",n.toString());
+        Log.d("test", n.toString());
 
         for (Node n2 : n.getChildren())
         {
@@ -246,7 +254,7 @@ public class MainActivity extends AppCompatActivity
 
     private AnchorNode getAnchorNode(Material material)
     {
-      //  Log.d("test", "getAnchorNode");
+        //  Log.d("test", "getAnchorNode");
         Frame frame = arFragment.getArSceneView().getArFrame();
         Point point = getScreenCenter();
         Log.d("test", "SC " + point.toString());
@@ -321,6 +329,8 @@ public class MainActivity extends AppCompatActivity
 
         return base;
     }
+
+
 
 
     private TransformableNode createCylinder(float x, float y, float z, float radius, float height, Node parent, Material material)
