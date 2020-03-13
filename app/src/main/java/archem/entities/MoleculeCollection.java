@@ -108,6 +108,16 @@ public class MoleculeCollection
                 }
         ));
 
+        addMolecule(new Molecule("NaCl",
+                new Atom[]{
+                        getAtom("Na", -85, 0,-40,0),
+                        getAtom("Cl", 65, 0,40,0)
+                },
+                new Bond[]{
+                        new IonicBond(new int[]{0, 1}, new int[]{-1, 1})
+                }
+        ));
+
         addMolecule(new Molecule("BeO",
                 new Atom[]{
                         getAtom("Be", -85, 0,-40,0),
@@ -129,6 +139,15 @@ public class MoleculeCollection
                 }
         ));
 
+        addMolecule(new Molecule("LiF",
+                new Atom[]{
+                        getAtom("Li", -65, 0,-30,0),
+                        getAtom("F", 65, 0,40,0)
+                },
+                new Bond[]{
+                        new IonicBond(new int[]{0, 1}, new int[]{-1, 1})
+                }
+        ));
 
         addMolecule(new Molecule("MgO",
                 new Atom[]{
@@ -137,6 +156,18 @@ public class MoleculeCollection
                 },
                 new Bond[]{
                         new IonicBond(new int[]{0, 1}, new int[]{-2, 2})
+                }
+        ));
+
+        addMolecule(new Molecule("K2O",
+                new Atom[]{
+                        getAtom("K", -85, 0,-30,0),
+                        getAtom("K", 85, 0,30,0),
+                        getAtom("O", 0, 0,1,0)
+                },
+                new Bond[]{
+                        new IonicBond(new int[]{0, 2}, new int[]{-1, 1}),
+                        new IonicBond(new int[]{1, 2}, new int[]{-1, 1})
                 }
         ));
 
