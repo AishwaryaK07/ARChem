@@ -220,7 +220,7 @@ public class Atom implements Cloneable, AnimationNode
       //  MainActivity.createRing(arFragment, (float) (x) / Util.scale, 0f, (float) (y) / Util.scale, .001f, atomNode, materialMap.get(MaterialType.RING));
       //  MainActivity.createRing(arFragment, (float) (x) / Util.scale, 0f, (float) (y) / Util.scale, .008f, atomNode, materialMap.get(MaterialType.RING));
 
-        for (int orbit = 0; orbit < configuration.length; orbit++)
+   /*     for (int orbit = 0; orbit < configuration.length; orbit++)
         {
 //            int nrings = configuration[orbit];
             float ring_radius =  ((factor * (orbit + 1) * 10)/Util.scale)/20;
@@ -228,7 +228,7 @@ public class Atom implements Cloneable, AnimationNode
             Util.createRing(str1,arFragment, (float) (0f) / Util.scale, 0f, (float) (0f) / Util.scale, ring_radius, atomNode, materialMap.get(MaterialType.RING));
             Util.createRing(str2,arFragment, (float) (0f) / Util.scale, 0f, (float) (0f) / Util.scale, ring_radius, atomNode, materialMap.get(MaterialType.RING));
             Util.createRing(str3,arFragment, (float) (0f) / Util.scale, 0f, (float) (0f) / Util.scale, ring_radius, atomNode, materialMap.get(MaterialType.RING));
-        }
+        } */
 
         Log.d("test1", "after buildAtom");
     }

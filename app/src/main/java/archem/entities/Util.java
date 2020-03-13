@@ -23,7 +23,7 @@ import java.util.function.Consumer;
 
 public class Util {
 
-    public static float scale = 800.0f;
+    public static float scale = 600.0f;
     public static float scale1 = 1000.0f;
 
     public static TransformableNode createSphere(ArFragment arFragment, float x, float y, float z, float radius, Node parent, Material material) {
@@ -68,7 +68,7 @@ public class Util {
 
 //        arFragment.getArSceneView().getScene().addChild(transformableNode);
 //        transformableNode.select();
-                    Log.d("test1", "sphere has created");
+                    Log.d("test1", "ring has created");
 
                 } else
                 {

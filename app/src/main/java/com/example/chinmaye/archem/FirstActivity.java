@@ -55,7 +55,7 @@ public class FirstActivity extends AppCompatActivity implements AdapterView.OnIt
             }
         });
 
-        b1 = findViewById(R.id.button);
+    /*    b1 = findViewById(R.id.button);
         b1.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -63,19 +63,19 @@ public class FirstActivity extends AppCompatActivity implements AdapterView.OnIt
             {
                 openActivity2();
             }
-        });
+        }); */
     }
 
-    public void openActivity2()
-    {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
+     /*   public void openActivity2()
+        {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+        */
         @Override
         public void onItemClick (AdapterView < ? > parent, View view,int position, long id)
         {
 
         }
-    }
+}
 

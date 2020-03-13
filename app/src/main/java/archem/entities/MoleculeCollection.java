@@ -39,56 +39,112 @@ public class MoleculeCollection
     {
         addMolecule(new Molecule("HCl",
                 new Atom[]{
-                        getAtom("H", -15, 0,-7,0),
-                        getAtom("Cl", 25, 0,14,0)
+                        getAtom("H", -45, 0,-20,0),
+                        getAtom("Cl", 65, 0,40,0)
                 },
                 new Bond[]{
-                        new ValenceBond(new int[]{0, 1}, 1, 0, 0)
+                        new ValenceBond(new int[]{0, 1}, 1, 10, 0)
                 }
         ));
-        /*addMolecule(new Molecule("NO2",
+
+        addMolecule(new Molecule("F2",
                 new Atom[]{
-                        getAtom("N", 0, 0,0,0),
-                        getAtom("O", 45, -40,25,-20),
-                        getAtom("O", 45, 40,25,-20)
+                        getAtom("F", -65, 0,-40,0),
+                        getAtom("F", 65, 0,40,0)
                 },
                 new Bond[]{
-                        new ValenceBond(new int[]{0, 1}, 1, 0, 0)
+                        new ValenceBond(new int[]{0, 1}, 1, 0, 0),
+                        new ValenceBond(new int[]{1, 0}, 1, 0, 0)
                 }
-        )); */
+        ));
+
+        addMolecule(new Molecule("O2",
+                new Atom[]{
+                        getAtom("O", -65, 0,-40,0),
+                        getAtom("O", 65, 0,40,0)
+                },
+                new Bond[]{
+                        new ValenceBond(new int[]{0, 1}, 2, 0, 0),
+                        new ValenceBond(new int[]{1, 0}, 2, 0, 0)
+                }
+        ));
+
+        addMolecule(new Molecule("N2",
+                new Atom[]{
+                        getAtom("N", -65, 0,-40,0),
+                        getAtom("N", 65, 0,40,0)
+                },
+                new Bond[]{
+                        new ValenceBond(new int[]{0, 1}, 3, 0, 0),
+                        new ValenceBond(new int[]{1, 0}, 3, 0, 0)
+                }
+        ));
 
         addMolecule(new Molecule("C2H4",
                 new Atom[]{
-                        getAtom("H", -17, -7,12,12),
-                        getAtom("H", 17, -7,5,12),
-                        getAtom("H", -17, 7,-5,12),
-                        getAtom("H", 17, 7,-12,12),
-                        getAtom("C", -10, 0,-7,7),
-                        getAtom("C", 10, 0,-7,-7)
+                        getAtom("H", -67, -7,42,12),
+                        getAtom("H", 67, -7,45,12),
+                        getAtom("H", -67, 7,-45,12),
+                        getAtom("H", 67, 7,-42,12),
+                        getAtom("C", -40, 0,-27,7),
+                        getAtom("C", 40, 0,-27,-7)
                 },
                 new Bond[]{
-                        new ValenceBond(new int[]{0, 4}, 3, 0, 0),
-                        new ValenceBond(new int[]{1, 4}, 3, 0, 0),
-                        new ValenceBond(new int[]{2, 5}, 3, 0, 0),
-                        new ValenceBond(new int[]{3, 5}, 3, 0, 0),
-                        new ValenceBond(new int[]{4, 5}, 3, 0, 0)
+                        new ValenceBond(new int[]{0, 4}, 1, 0, 0),
+                        new ValenceBond(new int[]{1, 4}, 1, 0, 0),
+                        new ValenceBond(new int[]{2, 5}, 1, 0, 0),
+                        new ValenceBond(new int[]{3, 5}, 1, 0, 0),
+                        new ValenceBond(new int[]{4, 5}, 2, 0, 0)
                 }
         ));
 
         addMolecule(new Molecule("KCl",
                 new Atom[]{
-                        getAtom("K", -55, 0,-30,0),
-                        getAtom("Cl", 35, 0,30,0)
+                        getAtom("K", -85, 0,-40,0),
+                        getAtom("Cl", 65, 0,40,0)
                 },
                 new Bond[]{
                         new IonicBond(new int[]{0, 1}, new int[]{-1, 1})
                 }
         ));
 
+        addMolecule(new Molecule("BeO",
+                new Atom[]{
+                        getAtom("Be", -85, 0,-40,0),
+                        getAtom("O", 65, 0,40,0)
+                },
+                new Bond[]{
+                        new IonicBond(new int[]{0, 1}, new int[]{-1, 1})
+                }
+        ));
+
+
+        addMolecule(new Molecule("NaF",
+                new Atom[]{
+                        getAtom("Na", -85, 0,-30,0),
+                        getAtom("F", 45, 0,30,0)
+                },
+                new Bond[]{
+                        new IonicBond(new int[]{0, 1}, new int[]{-1, 1})
+                }
+        ));
+
+
+        addMolecule(new Molecule("MgO",
+                new Atom[]{
+                        getAtom("Mg", -85, 0,-30,0),
+                        getAtom("O", 65, 0,30,0)
+                },
+                new Bond[]{
+                        new IonicBond(new int[]{0, 1}, new int[]{-2, 2})
+                }
+        ));
+
+
         addMolecule(new Molecule("CaS",
                 new Atom[]{
-                        getAtom("Ca", -55, 0,-30,0),
-                        getAtom("S", 35, 0,30,0)
+                        getAtom("Ca", -85, 0,-30,0),
+                        getAtom("S", 65, 0,30,0)
                 },
                 new Bond[]{
                         new IonicBond(new int[]{0, 1}, new int[]{-2, 2})
