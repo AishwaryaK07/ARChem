@@ -80,7 +80,7 @@ public class MoleculeCollection
                 }
         ));
 
-        addMolecule(new Molecule("C2H4",
+       /* addMolecule(new Molecule("C2H4",
                 new Atom[]{
                         getAtom("H", -67, -7,42,12),
                         getAtom("H", 67, -7,45,12),
@@ -96,7 +96,7 @@ public class MoleculeCollection
                         new ValenceBond(new int[]{3, 5}, 1, 0, 0),
                         new ValenceBond(new int[]{4, 5}, 2, 0, 0)
                 }
-        ));
+        ));  */
 
         addMolecule(new Molecule("KCl",
                 new Atom[]{
@@ -120,7 +120,7 @@ public class MoleculeCollection
 
         addMolecule(new Molecule("BeO",
                 new Atom[]{
-                        getAtom("Be", -85, 0,-40,0),
+                        getAtom("Be", -85, 0,-30,0),
                         getAtom("O", 65, 0,40,0)
                 },
                 new Bond[]{
@@ -141,7 +141,7 @@ public class MoleculeCollection
 
         addMolecule(new Molecule("LiF",
                 new Atom[]{
-                        getAtom("Li", -65, 0,-30,0),
+                        getAtom("Li", -65, 0,-20,0),
                         getAtom("F", 65, 0,40,0)
                 },
                 new Bond[]{
@@ -161,8 +161,8 @@ public class MoleculeCollection
 
         addMolecule(new Molecule("K2O",
                 new Atom[]{
-                        getAtom("K", -85, 0,-30,0),
-                        getAtom("K", 85, 0,30,0),
+                        getAtom("K", -85, 0,-70,0),
+                        getAtom("K", 85, 0,70,0),
                         getAtom("O", 0, 0,1,0)
                 },
                 new Bond[]{
@@ -174,7 +174,7 @@ public class MoleculeCollection
 
         addMolecule(new Molecule("CaS",
                 new Atom[]{
-                        getAtom("Ca", -85, 0,-30,0),
+                        getAtom("Ca", -85, 0,-40,0),
                         getAtom("S", 65, 0,30,0)
                 },
                 new Bond[]{

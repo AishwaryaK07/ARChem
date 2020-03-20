@@ -120,7 +120,7 @@ class IonicBond extends Bond {
 
     @Override
     public String toString() {
-        return "IonicBond{" +
+        return "IonicBondFrag{" +
                 "atoms=" + Arrays.toString(atoms) +
                 ", electron_transfer=" + Arrays.toString(electron_transfer) +
                 '}';
