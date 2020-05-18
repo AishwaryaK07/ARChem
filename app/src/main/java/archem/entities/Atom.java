@@ -16,9 +16,7 @@ import java.util.Vector;
 
 public class Atom implements Cloneable, AnimationNode
 {
-
-
-    static final int[] MAX_ELECTRON = {2, 8, 18, 32, 50, 72, 98, 128};
+//    static final int[] MAX_ELECTRON = {2, 8, 18, 32, 50, 72, 98, 128};
     static final double[] angles = {0, 180, 90, 270, 45, 225, 135, 315};
     static final double[] rangles;
 
@@ -212,11 +210,6 @@ public class Atom implements Cloneable, AnimationNode
 
         Log.d("test1", "after buildAtom");
     }
-
-
-
-
-
 
     @Override
     public void update()

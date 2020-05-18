@@ -13,6 +13,7 @@ public class Electron implements AnimationNode
     public float r;
     public float theta;
     public float deltatheta=.01f;
+    public float phase=0;
     public MaterialType materialType=MaterialType.ELECTRON;
 
     public Electron(double x, double y)
@@ -35,8 +36,8 @@ public class Electron implements AnimationNode
     {
         theta+=deltatheta;
 //        double radians=Math.toRadians(theta);
-        x=r*Math.cos(theta);
-        y=r*Math.sin(theta);
+        x=r*Math.cos(theta+phase);
+        y=r*Math.sin(theta+phase);
 
     //    Log.d("test","electron: update: "+x+","+y);
 
